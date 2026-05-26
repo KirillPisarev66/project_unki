@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Глобальные настройки */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Space Mono', monospace;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    /* Скрываем горизонтальную прокрутку из-за анимаций */
+    overflow-x: hidden; 
+}
+
+/* Навигация (меню) - теперь прилипает ниже заголовка */
+.menu {
+    background-color: #0a0a0a;
+    border-bottom: 2px solid #ffffff;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.button {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+}
+
+.button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* Контейнеры для контента */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* ========================================= */
+/* НОВЫЕ СТИЛИ ДЛЯ АНИМИРОВАННОГО ЗАГОЛОВКА */
+/* ========================================= */
+
+/* Секция огромного заголовка на главной */
+.hero-header {
+    width: 100%;
+    text-align: center;
+    padding: 80px 0 40px 0; /* Отступы сверху и снизу */
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Базовый стиль огромного заголовка */
+.glitch-title {
+    font-family: 'Space Mono', monospace;
+    color: #fff;
+    /* Огромный размер, масштабируемый в зависимости от ширины экрана */
+    font-size: 18vw; 
+    font-weight: 900;
+    position: relative;
+    letter-spacing: -0.05em;
+    margin: 0;
+    display: inline-block;
+    /* Постоянная анимация пульсации и сдвига */
+    animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+/* Псевдоэлементы для создания эффекта сбоя и расслоения */
+.glitch-title::before, .glitch-title::after {
+    content: attr(data-text); /* Берет текст из HTML атрибута data-text */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+/* Безумная анимация хроматической аберрации (сдвига слоев) */
+.glitch-title::before {
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+    text-shadow: -3px 0 #888; /* Сдвиг серого слоя влево */
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); /* Видима только верхняя треть */
+    left: 3px;
+}
+
+.glitch-title::after {
+    animation: glitch-anim-2 3.5s infinite linear alternate-reverse;
+    text-shadow: 3px 0 #fff; /* Сдвиг белого слоя вправо */
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); /* Видима только нижняя треть */
+    left: -3px;
+}
+
+/* --- Определение ключевых кадров анимаций --- */
+
+/* Анимация сдвига основного текста */
+@keyframes glitch-skew {
+    0% { transform: skew(0deg); }
+    10% { transform: skew(0deg); }
+    11% { transform: skew(-3deg) scaleY(1.1); }
+    12% { transform: skew(0deg); }
+    50% { transform: skew(0deg); }
+    51% { transform: skew(4deg) scaleX(0.9); }
+    52% { transform: skew(0deg); }
+    100% { transform: skew(0deg); }
+}
+
+/* Анимация быстрого мерцания clip-path для верхнего слоя */
+@keyframes glitch-anim-1 {
+    0% { clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%); }
+    5% { clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
+    10% { clip-path: polygon(0 10%, 100% 10%, 100% 40%, 0 40%); }
+    15% { clip-path: polygon(0 50%, 100% 50%, 100% 60%, 0 60%); }
+    /* ... быстрое мерцание продолжается ... */
+    100% { clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
+}
+
+/* Анимация быстрого мерцания clip-path для нижнего слоя */
+@keyframes glitch-anim-2 {
+    0% { clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%); }
+    5% { clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); }
+    10% { clip-path: polygon(0 60%, 100% 60%, 100% 90%, 0 90%); }
+    15% { clip-path: polygon(0 40%, 100% 40%, 100% 50%, 0 50%); }
+    /* ... быстрое мерцание продолжается ... */
+    100% { clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); }
+}
+
+/* ========================================= */
+/* КОНЕЦ НОВЫХ СТИЛЕЙ */
+/* ========================================= */
+
+/* Остальные существующие стили заголовков (используются на других страницах) */
+h1 {
+    font-size: 50px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Обычный glitch на hover для заголовков на других страницах */
+@keyframes normal-glitch {
+    0% { text-shadow: 2px 0 #fff, -2px 0 #333; }
+    50% { text-shadow: -2px 0 #fff, 2px 0 #333; }
+    100% { text-shadow: 2px 0 #fff, -2px 0 #333; }
+}
+
+h1:hover {
+    animation: normal-glitch 0.2s infinite;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #cccccc;
+    text-transform: none;
+}
+
+img {
+    max-width: 100%;
+    border: 1px solid #333;
+    filter: grayscale(100%) contrast(120%);
+    transition: 0.5s;
+}
+
+img:hover {
+    filter: grayscale(100%) contrast(150%) brightness(1.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 15px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+}
+
+th {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+tr:hover td {
+    background-color: #111111;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    background: #050505;
+    border: 1px solid #555;
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Space Mono', monospace;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    border-color: #fff;
+    outline: none;
+}

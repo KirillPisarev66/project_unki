@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>UNKI - Связь</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <a href="index.html" class="button">Главная</a>
+        <a href="bio.html" class="button">Досье</a>
+        <a href="tracks.html" class="button">База треков</a>
+        <a href="contacts.html" class="button">Связь</a>
+    </div>
+
+    <div class="container">
+        <h1>ТЕРМИНАЛ СВЯЗИ</h1>
+        <p>Система защищенной связи с менеджментом артиста. Заполните все поля протокола для отправки запроса на букинг, коллаборации или интервью. Система автоматически зашифрует ваше сообщение.</p>
+        
+        <form onsubmit="alert('ПРОТОКОЛ ВЫПОЛНЕН. ВЫ БУДЕТЕ ПЕРЕНАПРАВЛЕНЫ НА ГЛАВНУЮ.'); window.location.href='index.html'; return false;">
+            <label style="color: #888;">// Идентификатор (Ваше Имя)</label>
+            <input type="text" placeholder="Введите имя..." required>
+            
+            <label style="color: #888;">// Сетевой адрес (Ваш Email)</label>
+            <input type="email" placeholder="example@mail.com" required>
+            
+            <label style="color: #888;">// Пакет данных (Сообщение)</label>
+            <textarea rows="6" placeholder="ВВОД ДАННЫХ..." required></textarea>
+            
+            <button type="submit" class="button" style="width: 100%; font-size: 18px;">ИНИЦИИРОВАТЬ ОТПРАВКУ И ВЕРНУТЬСЯ В НАЧАЛО</button>
+        </form>
+    </div>
+<footer style="text-align: center; padding: 40px 20px; border-top: 1px solid #333; margin-top: 60px; color: #555; font-size: 14px; letter-spacing: 2px;">
+        <p>Newwawe</p>
+        <p>В разработке проекта cделал Писарев Кирилл fck.skellly</p>
+    </footer>
+</body>
+</html>
